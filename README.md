@@ -2,19 +2,19 @@
 
 ## Table of Contents
 
-- [Instructions](#instructions)
-- [Contributing](#contributing)
+* [Introduction](#introduction)
+* [How to run](#how-to-run)
+* [How to play](#how-to-play)
 
-## Instructions
+## Introduction
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+This is a Classic Arcade Game Clone project that I've done as part of my Nanodegree program in Udacity. The project is made using html, css and javascript. The html,css, enjine.js, resource.js, app.js, images were provided by Udacity and I have updated the javascript code by modifying app.js file. I added the player and enemies and made them move and colide.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
 
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
+## How to run
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Just clone the project and open the index.html file on a browser. This project is tested on chrome browser. 
 
-## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## How to play
+There are 4 enemies and one player. Enemies are moving in various speeds. Player has to pass through all of them and reach the water. We have to use "left", "right", "up", "down" keys of the keyboard to move the player. If player collides with any of the enemies, then it goes back to its initial positon. Time count starts just after refreshing the page and it stops when the player reaches the water.
