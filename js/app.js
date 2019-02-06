@@ -1,3 +1,13 @@
+function GameObject(){
+    this.x;
+    this.y;
+}
+
+// Draw the enemy on the screen, required method for game
+GameObject.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // Enemies, our player must avoid
 let Enemy = function(x, y, speed) {
 
@@ -15,6 +25,8 @@ let Enemy = function(x, y, speed) {
     this.y = y;
     this.speed = speed;
 };
+
+Enemy.prototype = new GameObject();
 
 // the objects are instantiated
 // all enemy objects are in an array called allEnemies
@@ -49,33 +61,25 @@ Enemy.prototype.update = function(dt) {
     checkCollision();
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
 //  player class
-let Player = function() {
+let Player = function(x,y) {
     // Variables applied to each of our instances go here,
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
 
     // Player's initial location
-    this.x = 200;
-    this.y = 310;
+    this.x = x;
+    this.y = y;
 };
+
+Player.prototype = new GameObject();
 
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.update = function() {
     // "checkCollision" function is called when player is moved
     checkCollision();
-};
-
-// Draw the player on the screen, required method for game
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // fixes player's location when "left", "right", "up", "down" keys are pressed
@@ -89,12 +93,11 @@ Player.prototype.handleInput = function(keyCode) {
 
     } else if (keyCode === 'up' && this.y > 0) {
         this.y = this.y - 90;
-        if(player.y <= 0){
+        if(this.y <= 0){
             timeAndModal.showModal();
             // time stops when the player reaches water
             clearTimeout(timeAndModal.timeOut);
         }
-
     } else if (keyCode === 'down' && this.y < 400) {
         this.y = this.y + 90;
     }
@@ -114,7 +117,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 // the player object is placed in a variable called player
-let player = new Player();
+let player = new Player(200, 310);
 
 // a function is declared to demonstrate player-enemy collision
 function checkCollision(){
